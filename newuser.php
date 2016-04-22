@@ -79,7 +79,7 @@ if(isset($_SESSION["username"])){
 						$to=$_POST["newemail"];
 							$passwd=sha1($_POST["newpass"]);
 							//record the user in the database
-							$results3 = mysqli_query($mysqli, "INSERT INTO users (password, name, surname, email, active, code) VALUES ('".$passwd."', '".$_POST["newname"]."', '".$_POST["newsurname"]."', '".$_POST["newemail"]."', '0', '".$clave."')" );
+							$results3 = mysqli_query($mysqli, "INSERT INTO users (password, name, surname, email, active, code) VALUES ('".$passwd."', '".$_POST["newname"]."', '".$_POST["newsurname"]."', '".$_POST["newemail"]."', '1', '".$clave."')" );
 							//enviar email activar
 							$row = $results->fetch_assoc();
 								$message = '<html><body>';
@@ -97,14 +97,14 @@ if(isset($_SESSION["username"])){
 								$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 								$headers .= "\r\n";
 
-								if ( mail($to,$subject,$message,$headers) ) {
-								   echo "<h2>Comprueba tu Correo, tienes un email!</h2><br>Puede que el email haya ido a la carpeta de Spam, compruebala si ves que no te llega";
-								   } else {
-								   echo "<h2>No se ha podido enviar el email, pruebe mas tarde</h2>";
-								   }
+						//		if ( mail($to,$subject,$message,$headers) ) {
+						//		   	echo "<h2>Ya estas registrado</h2><br>Inicia sesion con tu nombre y usuario y";
+						// 		  } else {
+						//			echo "<h2>No se ha podido enviar el email, pruebe mas tarde</h2>";
+						//		  }
 							//volver al index
 
-							
+							echo "<h2>Ya estas registrado</h2><br>Inicia sesion con tu nombre y usuario <br> Recuerda que como usuario registrado puedes valorar servicios y publicar los tuyos propios";
 							echo "<meta http-equiv=\"refresh\" content=\"5;url=index.php\"/>";
 							
 							}else{

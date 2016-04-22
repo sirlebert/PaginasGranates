@@ -70,7 +70,7 @@ if(isset($_SESSION["username"])){
 							echo '<br><div class="left-sidebar"><center><h2>Usuarios</h2></center></div>';
 							if ($user == NULL)
 							{
-							$results4 = $mysqli->query("SELECT DISTINCT LEFT( users.name, 1 ) AS  'letra' FROM users ORDER BY letra");
+							$results4 = $mysqli->query("SELECT DISTINCT LEFT( users.name, 1 ) AS  'letra' FROM users WHERE active like '1' ORDER BY letra");
 								echo '<table width="100%" >';
 									echo "<tr>";
 											echo '<td width="20%">';
@@ -90,9 +90,10 @@ if(isset($_SESSION["username"])){
 											echo "</td>";
 										echo "</tr></table>";
 								while($row4 = $results4->fetch_assoc()) {
+									//this shows all the users
 									print '<div class="item-subtitle">'.ucwords ($row4["letra"]).'</div>';
 									
-									$results5 = $mysqli->query("SELECT * FROM `users` WHERE `name` like '".$row4["letra"]."%'");
+									$results5 = $mysqli->query("SELECT * FROM users WHERE name like '".$row4["letra"]."%'  and active like '1'");
 									print '<div class="item-p"><ul><table width="100%">';
 									while($row6 = $results5->fetch_assoc()) {
 										echo "<tr>";
@@ -133,10 +134,10 @@ if(isset($_SESSION["username"])){
 							}else{
 									if ($userpost != NULL){
 										echo '<div class="item-subtitle">Resultados para la busqueda de '.ucwords($user).':</div>';
-										$results6 = $mysqli->query("SELECT * FROM `users` WHERE `name` like '".$user."%' or `surname` like '".$user."%'");	
+										$results6 = $mysqli->query("SELECT * FROM `users` WHERE `name` like '".$user."%' or `surname` like '".$user."%' and 'active' like '1'");	
 									}else{
 										echo '<div class="item-subtitle">'.ucwords($user).'</div>';
-										$results6 = $mysqli->query("SELECT * FROM `users` WHERE `name` like '".$user."%'");
+										$results6 = $mysqli->query("SELECT * FROM `users` WHERE name like '".$user."%' and active like '1'");
 									}
 									print '<div class="item-p"><ul>';
 									echo '<table width="100%">';
