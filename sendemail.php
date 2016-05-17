@@ -70,23 +70,12 @@ if(isset($_SESSION["username"])){
 								$message .= '<h1>Hola, '.$row["name"].' '.$row["surname"].'!</h1>';
 								$message .= 'Estas recibiendo este email por que has olvidado tu contraseña, haciendo click en el siguiente link podras cambiarla por una nueva<br><br>';
 								$message .= 'Si tu no has solicitado este email, simplemente ignoralo<br><br>';
-								$message .= 'Accede a este link e introduce tu nueva contraseña:<br><br><a href="http://edimburgo.ovh/passforgot.php?id='.$row["id"].'&code='.$row[code].'">http://edimburgo.ovh/passforgot.php?id='.$row["id"].'&code='.$row[code].'</a><br><br>';
-								$message .= 'O tambien puedes ir a <a href="http://edimburgo.ovh/passforgot.php?id='.$row["id"].'">aqui</a> e Introducir el codigo: <h3>'.$row[code].'</h3><br><br> ';		
-								$message .= '<br><br>Atentamente <br><br>El equipo de <a href="http://edimburgo.ovh">Españoles en Edimburgo - El Directorio</a>';
+								$message .= 'Accede a este link e introduce tu nueva contraseña:<br><br><a href="http://paginasgranates.com/passforgot.php?id='.$row["id"].'&code='.$row[code].'">http://paginasgranates.com/passforgot.php?id='.$row["id"].'&code='.$row[code].'</a><br><br>';
+								$message .= 'O tambien puedes ir a <a href="http://paginasgranates.com/passforgot.php?id='.$row["id"].'">aqui</a> e Introducir el codigo: <h3>'.$row[code].'</h3><br><br> ';		
+								$message .= '<br><br>Atentamente <br><br>El equipo de <a href="http://paginasgranates.com">Paginas Granates</a>';
 								$message .= '</body></html>';
-								$headers = "From: noreply@Edimburgo.ovh\r\n";
-								$headers .= "Reply-To: espanolesenedimburgo@gmail.com\r\n";
-								$headers .= "Return-Path: espanolesenedimburgo@gmail.com\r\n";
-								$headers .= "CC: \r\n";
-								$headers .= "MIME-Version: 1.0\r\n";
-								$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-								$headers .= "\r\n";
-
-								if ( mail($to,$subject,$message,$headers) ) {
-								   echo "<h2>Comprueba tu Correo, tienes un email!</h2><br>Puede que el email haya ido a la carpeta de Spam, compruebala si ves que no te llega";
-								   } else {
-								   echo "<h2>No se ha podido enviar el email, pruebe mas tarde</h2>";
-								   }
+								
+								include 'mailing.php';
 							}
 						?> 
 				</div>

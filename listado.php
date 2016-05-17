@@ -54,23 +54,23 @@ if(isset($_SESSION["username"])){
 						print '<div class="item-title">'.ucwords ($v1).'</div><br>';
 						if ($v1== "todos"){
 
-								$results3 = $mysqli->query("SELECT category.category, category.id FROM category inner join list on category.id=list.category group by category.category ORDER BY category.category");
+								$results3 = $mysqli->query("SELECT category.category, category.id FROM category inner join list on category.id=list.category where list.city like '".$_SESSION["city"]."' group by category.category ORDER BY category.category");
 								
 								while($row3 = $results3->fetch_assoc()) {
 									print '<div class="item-subtitle">'.$row3["category"].'</div>';
 									
-									$results4 = $mysqli->query("SELECT * FROM `list` WHERE `category` like ".$row3["id"]);
+									$results4 = $mysqli->query("SELECT * FROM `list` WHERE city like '".$_SESSION["city"]."' and `category` like ".$row3["id"]);
 									print '<div class="item-p"><ul>';
 									while($row4 = $results4->fetch_assoc()) {
-										print '<p><li><a href="servicio.php?id='.$row4["id"].'">'.$row4["name"].'</a><br></li></p>';
+										print '<p><li><a href="servicio.php?id='.$row4["id"].'">'.$row4["name"].' ('.ucfirst ($row4["city"]).')</a><br></li></p>';
 									}
 									print '</ul></div>';
 	  
 								} 
 						}else{
-							$results5 = $mysqli->query("SELECT list.name, list.id as listid, category.id FROM list INNER JOIN category ON list.category=category.id where category.category like '".$v1."'");
+							$results5 = $mysqli->query("SELECT list.name, list.id as listid, list.city, category.id FROM list INNER JOIN category ON list.category=category.id where list.city like '".$_SESSION["city"]."' and category.category like '".$v1."'");
 							while($row5 = $results5->fetch_assoc()) {
-								print '<li><div class="item-subtitle">'.$row5["name"].'       <a href="servicio.php?id='.$row5["listid"].'"><button type="button" class="btn btn-default get">Go</button></a></div></li>';
+								print '<li><div class="item-subtitle">'.$row5["name"].'('.ucfirst ($row5["city"]).')       <a href="servicio.php?id='.$row5["listid"].'"><button type="button" class="btn btn-default get">Go</button></a></div></li>';
 								print '<hr>';
 							}  
 						}					

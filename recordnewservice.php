@@ -61,27 +61,23 @@ if(isset($_SESSION["username"])){
 						$email=$_POST["email"];
 						$username=$_POST["username"];
 						$user=$_POST["user"];
+						$city=$_POST["city"];
 						echo "<h2>Guardando Servicio</h2>";
 						
 						$results3 = mysqli_query($mysqli, "INSERT INTO list_temp 
-								   (category, name, description, web, web2, facebook, telephone, email, username, user) 
-						VALUES ('".$category."', '".$name."', '".$description."', '".$web1."', '".$web2."', '".$facebook."', '".$telephone."' , '".$email."', '".$username."', '".$user."')" );
+								   (category, name, description, web, web2, facebook, telephone, email, username, user, city) 
+						VALUES ('".$category."', '".$name."', '".$description."', '".$web1."', '".$web2."', '".$facebook."', '".$telephone."' , '".$email."', '".$username."', '".$user."', '".$city."')" );
 						echo "servicio guardado pendiente de aprobacion";
-						$subject= "Un nuevo servicio registrado - Edimburgo.ovh";
-						$to="sgsantillana@edimburgo.ovh";
+						$subject= "Un nuevo servicio registrado - PaginasGranates.com";
+						$to="paginasgranates1@gmail.com";
 						$message = '<html><body>';
 						$message .= '<h1>Hola!</h1>';
 						$message .= 'Estas recibiendo este email por que alguien ha registrado un nuevo servicio,';
-						$message .= '<br><br>Atentamente <br><br>El equipo de <a href="http://edimburgo.ovh">Españoles en Edimburgo - El Directorio</a>';
+						$message .= '<br><br>Atentamente <br><br>El equipo de <a href="http://paginasgranates.com">Paginas Granates</a>';
 						$message .= '</body></html>';
-						$headers = "From: noreply@Edimburgo.ovh\r\n";
-						$headers .= "Reply-To: admin@edimburgo.ovh\r\n";
-						$headers .= "Return-Path: admin@edimburgo.ovh\r\n";
-						$headers .= "CC: \r\n";
-						$headers .= "MIME-Version: 1.0\r\n";
-						$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-						$headers .= "\r\n";
-						mail($to,$subject,$message,$headers);
+
+						include 'mailing.php';
+						
 						echo "<meta http-equiv=\"refresh\" content=\"3;url=user.php\"/>";
 					?>
 				</div>

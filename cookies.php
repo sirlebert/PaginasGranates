@@ -58,11 +58,11 @@ if(isset($_SESSION["username"])){
 						      </tr>
 				  </table>
 				  
-				  <div class="item-p">Edimburgo.ovh usa cookies sólo con objetivos técnicos, para la autenticación de usuarios. En ningún caso estos cookies se usan para otro fines a los anteriormente descriptos, ni se pasa información a terceros. 
+				  <div class="item-p">PaginasGranates.com usa cookies sólo con objetivos técnicos, para la autenticación de usuarios. En ningún caso estos cookies se usan para otro fines a los anteriormente descriptos, ni se pasa información a terceros. 
 
-<br><br>Usamos Google Analytics para obtener las estadísticas de accesos, por lo que además de los cookies mencionados, se podrían incluir otros cookies para el seguimiento de sesiones y usuarios únicos. En ningún caso estos cookies incluyen información personal o privada de los usuarios registrados en edimburgo.ovh, están completamente disasociados y aislados de los datos que gestiona Españoles en Edimburgo - El Directorio -. 
+<br><br>Usamos Google Analytics para obtener las estadísticas de accesos, por lo que además de los cookies mencionados, se podrían incluir otros cookies para el seguimiento de sesiones y usuarios únicos. En ningún caso estos cookies incluyen información personal o privada de los usuarios registrados en PaginasGranates.com, están completamente disasociados y aislados de los datos que gestiona esta pagina. 
 
-<br><br>Las empresas que llevan las estadísticas de acceso, podrían usar cookies con fines estadísticos y sólo para los accesos a sus servidores. En ningún caso se relacionan con los datos de usuarios de edimburgo.ovh, y hacemos el esfuerzo técnico para impedir que haya fugas de datos personales. 
+<br><br>Las empresas que llevan las estadísticas de acceso, podrían usar cookies con fines estadísticos y sólo para los accesos a sus servidores. En ningún caso se relacionan con los datos de usuarios de PaginasGranates.com, y hacemos el esfuerzo técnico para impedir que haya fugas de datos personales. 
 
 <br><br>Los usuarios pueden eliminarlos o impedir el envío de esos cookies desde las opciones de su navegador.<br><br>
 La administración 

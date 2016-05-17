@@ -80,17 +80,27 @@ if(isset($_SESSION["username"])){
 							?>
 							</select><p>
 								Nombre de la empresa o Servicio ofrecido:
-								<input name="name" type="text" placeholder="Nombre del Servicio (obligatorio)" required />
+								<input name="name" type="text" placeholder="Nombre del Servicio" required />
 								Descripcion del Servicio:
 								<textarea name="description" class="form-control" rows="5" placeholder="Descripcion del Servicio (obligatorio)"required> </textarea>
+								Localidad (obligatorio):
+								<select name="city" required>
+								<?php
+								$results = $mysqli->query("SELECT * from cities ORDER BY city ASC");
+
+								while($row = $results->fetch_assoc()) {
+									echo '<option value="'.$row["city"].'">'.$row["city"].'</option>';
+								}
+								?>
+								</select>
 								Introduce tu perfil personal de Facebook:
-								<input name="facebook" type="url" placeholder="Perfil de Facebook incluyendo http:// (obligatorio)" required />
+								<input name="facebook" type="url" placeholder="Perfil de Facebook incluyendo http://"  />
 								Pagina web o Pagina de facebook del servicio:
 								<input name="web1" type="url" placeholder="Direccion web o de facebook incluyendo http://"  />
 								Si dispones de alguna direccion mas:
 								<input name="web2" type="url" placeholder="Direccion web incluyendo http://" />
 								Telefono:
-								<input name="telephone" type="number" onKeyDown="myFunction()" placeholder="Numero de Telefono" />
+								<input name="telephone" type="text" onKeyDown="myFunction()" placeholder="Numero de Telefono" />
 								Email:
 								<input name="email" type="email" placeholder="Direccion Email" />
 								<?php
@@ -100,7 +110,7 @@ if(isset($_SESSION["username"])){
 								
 								<button name="newbutton" type="submit" class="btn btn-default" >Enviar</button>
 							</form>
-							Solicitamos el perfil de facebook como prueba de que la gente que ofrece servicios es miembro del grupo "Españoles en Edimburgo".
+							
 						</div><!--/sign up form-->
 					</div>
 				</div>

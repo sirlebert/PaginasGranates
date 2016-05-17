@@ -53,7 +53,7 @@ if(isset($_SESSION["username"])){
 					print '<div class="item-title"> Resultados para: '.ucwords ($buscar).'</div><br>';
 
 					//MySqli Select Query
-					$results3 = $mysqli->query("SELECT * FROM list where name like '%".$buscar."%'");
+					$results3 = $mysqli->query("SELECT * FROM list where name like '%".$buscar."%' and city like '%".$_SESSION["city"]."%'");
 					while($row3 = $results3->fetch_assoc()) {
 						print '<li><div class="item-subtitle">'.$row3["name"].'       <a href="servicio.php?id='.$row3["id"].'"><button type="button" class="btn btn-default get">Go</button></a></div></li>';
 						print '<hr>';

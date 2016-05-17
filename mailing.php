@@ -1,88 +1,76 @@
-<!DOCTYPE html>
-<?php 
-session_start();
-if(isset($_SESSION["username"])){
-	$in=1;
+<?php
+/**
+ * This example shows settings to use when sending via Google's Gmail servers.
+ */
 
-}else{
-	$in=0;
-	
+//SMTP needs accurate times, and the PHP time zone MUST be set
+//This should be done in your php.ini, but this is how to do it if you don't have access to that
+date_default_timezone_set('Etc/UTC+1');
+
+require 'phpmailer/PHPMailerAutoload.php';
+
+//Create a new PHPMailer instance
+$mail = new PHPMailer;
+
+//Tell PHPMailer to use SMTP
+$mail->isSMTP();
+
+//Enable SMTP debugging
+// 0 = off (for production use)
+// 1 = client messages
+// 2 = client and server messages
+$mail->SMTPDebug = 0;
+
+//Ask for HTML-friendly debug output
+$mail->Debugoutput = 'html';
+
+//Set the hostname of the mail server
+$mail->Host = 'smtp.gmail.com';
+// use
+// $mail->Host = gethostbyname('smtp.gmail.com');
+// if your network does not support SMTP over IPv6
+
+//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+$mail->Port = 587;
+
+//Set the encryption system to use - ssl (deprecated) or tls
+$mail->SMTPSecure = 'tls';
+
+//Whether to use SMTP authentication
+$mail->SMTPAuth = true;
+
+//Username to use for SMTP authentication - use full email address for gmail
+$mail->Username = "paginasgranates1@gmail.com";
+
+//Password to use for SMTP authentication
+$mail->Password = "coco_1drilo";
+
+//Set who the message is to be sent from
+$mail->setFrom('Paginasgranates1@gmail.com', 'Paginas Granates');
+
+//Set an alternative reply-to address
+$mail->addReplyTo('Paginasgranates1@gmail.com', 'Paginas Granates');
+
+//Set who the message is to be sent to
+$mail->addAddress($to);
+
+//Set the subject line
+$mail->Subject = $subject;
+
+
+//Read an HTML message body from an external file, convert referenced images to embedded,
+//convert HTML into a basic plain-text alternative body
+$mail->msgHTML($message, dirname(__FILE__));
+
+//Replace the plain text body with one created manually
+$mail->AltBody = 'This is a plain-text message body';
+
+//Attach an image file
+
+
+//send the message, check for errors
+if (!$mail->send()) {
+    //echo "Mailer Error: " . $mail->ErrorInfo;
+} else {
+   // echo "Message sent!";
 }
-?>
-<? include("functions.php"); ?>
-<html lang="en">
-<head>
-	<script src='https://www.google.com/recaptcha/api.js'></script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Send Email | Españoles en Edimburgo</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/price-range.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->       
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-</head><!--/head-->
-
-<body>
-	<?php
-		include 'header.php';
-	?>
-		
-	<section>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-3">
-					<?php
-						include 'categories.php';
-					?>					
-				</div>
-				
-				<div class="col-sm-9 padding-right">
-					<?php
-						$to=$_POST["to"];
-						$subject= 'Edimburgo.ovh - '.$_POST["subject"];
-						$from=$_POST["from"];
-						$message = '<html><body>Tienes un mensaje desde Edimburgo.ovh <hr>'.$_POST["Content"];
-						$message .= '<hr><br><br>Atentamente <br><br>El equipo de <a href="http://edimburgo.ovh">Españoles en Edimburgo - El Directorio</a>';
-						$message .= '</body></html>';
-						$headers = "From: ".$to."\r\n";
-						$headers .= "Reply-To: ".$to."\r\n";
-						$headers .= "Return-Path: ".$to."\r\n";
-						$headers .= "CC: \r\n";
-						$headers .= "MIME-Version: 1.0\r\n";
-						$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-						$headers .= "\r\n";
-						
-						sendmail ($to, $from, $header, $message)
-						?> 
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<?php
-		include 'footer.php';
-	?>
-	 
-    <script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.scrollUp.min.js"></script>
-	<script src="js/price-range.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/main.js"></script>
-	
-</body>
-</html>

@@ -59,7 +59,7 @@ if(isset($_SESSION["username"])){
 					$results3 = $mysqli->query("SELECT * FROM list where id like '".$v1."'");
 					while($row3 = $results3->fetch_assoc()) {
 						print '<div class="item-title">'.$row3["name"].'</div>';
-						print '<div class="item-subtitle">'.$row3["username"].'</div>';
+						print '<div class="item-subtitle">'.$row3["username"].' ('.ucfirst ($row3["city"]).')</div>';
 						print '<div class="item-p">';
 						$salida = nl2br($row3["description"]);
 						print $salida.'<br><br>';

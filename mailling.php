@@ -55,20 +55,19 @@ if(isset($_SESSION["username"])){
 
 						$to=$_POST["to"];
 						$subject= 'Edimburgo.ovh - '.$_POST["subject"];
-						$from=$_POST["from"];
 						$message = '<html><body>Tienes un mensaje desde Edimburgo.ovh <hr>'.$_POST["content"];
 						$message .= '<hr><br><br>Atentamente <br><br>El equipo de <a href="http://edimburgo.ovh">Españoles en Edimburgo - El Directorio</a>';
 						$message .= '</body></html>';
-						$headers = "From: ".$from."\r\n";
-						$headers .= "Reply-To: ".$from."\r\n";
-						$headers .= "Return-Path: ".$from."\r\n";
+						$headers = "From: espanolesenedimburgo@gmail.com\r\n";
+						$headers .= "Reply-To: espanolesenedimburgo@gmail.com\r\n";
+						$headers .= "Return-Path: espanolesenedimburgo@gmail.com\r\n";
 						$headers .= "CC: \r\n";
 						$headers .= "MIME-Version: 1.0\r\n";
 						$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 						$headers .= "\r\n";
 						
-						sendmail ($to, $subject, $headers, $message);
-						echo "<meta http-equiv=\"refresh\" content=\"3;url=index.php\"/>";
+						sendmail ($to, $subject, $message);
+						
 						?> 
 				</div>
 			</div>

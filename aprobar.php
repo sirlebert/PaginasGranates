@@ -16,7 +16,7 @@ if(isset($_SESSION["username"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | Españoles en Edimburgo</title>
+    <title>Nuevo Servicio | Españoles en Edimburgo</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -33,77 +33,27 @@ if(isset($_SESSION["username"])){
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+	
+	<SCRIPT type="text/javascript">
+	function myFunction() {
+		var e = event || window.event;  
+		var key = e.keyCode || e.which; 
+
+		if (key < 48 || key > 57) { 
+			if(key == 8 || key == 46){} //allow backspace and delete                                   
+			else{
+				if (e.preventDefault) e.preventDefault(); 
+				e.returnValue = false; 
+			}	
+		}
+	}
+	</script>
 </head><!--/head-->
 
 <body>
-	<header id="header"><!--header-->
-		<div class="header_top"><!--header_top-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						
-					</div>
-					<div class="col-sm-6">
-						<div class="social-icons pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="https://www.facebook.com/groups/225683810811975/"target="_blank"><i class="fa fa-facebook"></i>Españoles en Edimburgo</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header_top-->
-		
-		<div class="header-middle"><!--header-middle-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="item-title">Españoles en Edimburgo</div>
-						<div class="item-subtitle">El Directorio</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header-middle-->
-	
-		<div class="header-bottom"><!--header-bottom-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
-						
-					</div>
-					<div class="col-sm-6">
-						<div class="item-subtitle">
-						<div class="search_box pull-right">
-							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.php" class="active">Home</a></li>
-								<li><a href="listado.php?cat=todos&letter=zz">Listado</a></li>
-								<li><a href="aboutus.php">About Us</a></li>
-								<?php 
-								if($in==1){
-									print '<li><a href="user.php">Cuenta</a>';
-									print '<li><a href="logout.php">Logout</a></li>';
-								}else{									
-									Print '<li><a href="login.php">Login</a>';
-								}
-								?>
-                            </ul>
-						</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header-bottom-->
-	</header><!--/header-->
-</section><!--/slider-->
-	
+	<?php
+		include 'header.php';
+	?>
 	<section>
 		<div class="container">
 			<div class="row">
@@ -183,10 +133,11 @@ if(isset($_SESSION["username"])){
 						$email=$row3["email"];
 						$username=$row3["username"];
 						$user=$row3["user"];
+						$city=$row3["city"];
 					}  
 
 				//record the record
-				$results3 = mysqli_query($mysqli, "INSERT INTO list (category, name, description, web, web2, facebook, telephone, email, username, user) VALUES ('".$category."', '".$name."', '".$description."', '".$web1."', '".$web2."', '".$facebook."', '".$telephone."' , '".$email."', '".$username."', '".$user."')" );
+				$results3 = mysqli_query($mysqli, "INSERT INTO list (category, name, description, web, web2, facebook, telephone, email, username, user, city) VALUES ('".$category."', '".$name."', '".$description."', '".$web1."', '".$web2."', '".$facebook."', '".$telephone."' , '".$email."', '".$username."', '".$user."', '".$city."')" );
 				echo "Servicio aprobado";
 				$results4 = $mysqli->query("DELETE FROM list_temp WHERE id like '".$id."'");
 				echo "<meta http-equiv=\"refresh\" content=\"3;url=user.php\"/>";
@@ -197,89 +148,9 @@ if(isset($_SESSION["username"])){
 		</div>
 	</section>
 	
-	
-		<div class="footer-top">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-2">
-						<div class="companyinfo">
-							<h2><span>Españoles</span> En Edimburgo</h2>
-							<p>Comunidad de inmigrantes españoles afincados en Edimburgo</p>
-						</div>
-					</div>
-					<div class="col-sm-7">
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<p>Webs de Interes:</p>
-								
-							</div>
-						</div>
-						
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="http://www.viviredimburgo.com">
-									<div class="iframe-img">
-										<img src="images/viviredimburgo-logo.png" alt="" />
-									</div>
-									
-								</a>
-								<p>Vivir Edimburgo</p>
-								
-							</div>
-						</div>
-						
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="images/home/iframe3.png" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Topic</p>
-								<h2>24 DEC 2013</h2>
-							</div>
-						</div>
-						
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="images/home/iframe4.png" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Topic</p>
-								<h2>24 DEC 2013</h2>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="address">
-							<img src="images/home/map.png" alt="" />
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	
-		<div class="footer-bottom">
-			<div class="container">
-				<div class="row">
-					<p class="pull-left">No Copyright © 2015 No rights reserved.</p>
-					<p class="pull-right">This is a Beta </p>
-				</div>
-			</div>
-		</div>
-		
-	</footer><!--/Footer-->
-	
-
+	<?php
+		include 'footer.php';
+	?>
   
     <script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -287,5 +158,6 @@ if(isset($_SESSION["username"])){
 	<script src="js/price-range.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
+	
 </body>
 </html>

@@ -58,11 +58,13 @@ if(isset($_SESSION["username"])){
 						      </tr>
 				  </table>
 				  
-				  <div class="item-p">El directorio es un servicio asociado al grupo de Facebook “Españoles en Edimburgo”.<br><br>
+				  <div class="item-p">El directorio nace como un servicio asociado al grupo de Facebook “Españoles en Edimburgo”.<br><br>
 Este nace ante la demanda de servicios por parte de los miembros del grupo, servicios como peluquería, fontanería… publicándose casi entrada la navidad de 2014 el primer directorio en pdf, con más de 80 personas registradas ofreciéndose en más de 25 categorías diferentes, y recibiendo más solicitudes para aparecer.<br><br>
 La forma en que el primer directorio fue creado hacia que la actualización de este fuera más compleja, había que crear un documento nuevo cada vez que se actualizaba algo, lo cual conllevaba el esfuerzo del ofertante para corregir los fallos como de los administradores del grupo para editarlo y crear el documento nuevo, y es por ello que nace la idea de este sitio web, un directorio nuevo, más dinámico, más accesible y donde los administradores tuvieran que tomar menos partido y los usuarios tuvieran el control.<br><br>
+En el año 2016, con mas de 50 servicios en la ciudad de Edimburgo, se decide desvincular el directorio del grupo, se reserva www.PaginasGranates.com, y se modifica para poder tener mas ciudades.<br><br>
+Se escoge paginasgranates.com por la relacion entre el granate y la emigracion, relacion creada por <a href="www.mareagranate.org" target="_blank">Marea Granate</a>, organizacion que respetamos pero no formamos parte, y a su vez el directorio "Paginas Amarillas", libro que todos hemos conocido donde aparecian todos los negocios del pais divididos por localidades<br><br>
 Y aquí esta, nuestra criatura, en continuo desarrollo, esperamos que les sirva de ayuda.<br><br>
-La administración 
+La administración <br>
 
 		</div></div>
 	</section>

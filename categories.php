@@ -10,7 +10,7 @@
 		$mysqli->set_charset("utf8");
 
 		//MySqli Select Query
-		$results = $mysqli->query("SELECT DISTINCT LEFT( category.category, 1 ) AS  'letra' FROM category INNER JOIN list on list.category=category.id ORDER BY letra");
+		$results = $mysqli->query("SELECT DISTINCT LEFT( category.category, 1 ) AS  'letra' FROM category INNER JOIN list on list.category=category.id WHERE list.city like '".$_SESSION["city"]."' ORDER BY letra");
 
 		while($row = $results->fetch_assoc()) {
 			print '<div class="panel panel-default">';
@@ -26,7 +26,7 @@
 			print '<div class="panel-body">';
 			print '<ul>';
 			//MySqli Select Query
-			$results2 = $mysqli->query("SELECT distinct category.category, category.id FROM category INNER JOIN list on list.category=category.id WHERE category.category like '".$row["letra"]."%'");
+			$results2 = $mysqli->query("SELECT distinct category.category, category.id FROM category INNER JOIN list on list.category=category.id WHERE list.city like '".$_SESSION["city"]."' and category.category like '".$row["letra"]."%'");
 						
 			while($row2 = $results2->fetch_assoc()) {
 				print '<li><a href="listado.php?cat='.$row2["category"].'"><div class="item-category">'.$row2["category"].'</div></a></li>';

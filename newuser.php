@@ -64,7 +64,7 @@ if(isset($_SESSION["username"])){
 					}else{
 						 if ($_POST["newpass"]==$_POST["newreppass"]){
 							if($_POST["newemail"]==$_POST["newrepemail"]){
-								print 'contraseñas e emails coinciden';
+
 								// Codigo generar clave
 								function generar_clave($longitud){ 
 								   $cadena="[^A-Z0-9]"; 
@@ -75,8 +75,7 @@ if(isset($_SESSION["username"])){
 								} 
 
 							$clave=generar_clave(16); 
-						$subject= "Activa tu Cuenta en Edimburgo.ovh";
-						$to=$_POST["newemail"];
+
 							$passwd=sha1($_POST["newpass"]);
 							//record the user in the database
 							$results3 = mysqli_query($mysqli, "INSERT INTO users (password, name, surname, email, active, code) VALUES ('".$passwd."', '".$_POST["newname"]."', '".$_POST["newsurname"]."', '".$_POST["newemail"]."', '1', '".$clave."')" );
@@ -84,27 +83,18 @@ if(isset($_SESSION["username"])){
 							$row = $results->fetch_assoc();
 								$message = '<html><body>';
 								$message .= '<h1>Hola, '.$row["name"].' '.$row["surname"].'!</h1>';
-								$message .= 'Estas recibiendo este email por que te has registrado en Edimburgo.ovh, El directorio de Servicios de Españoles en Edimburgo<br><br>';
+								$message .= 'Estas recibiendo este email por que te has registrado en PaginasGranates.com, El directorio de Servicios de Españoles residiendo fuera de España<br><br>';
 								$message .= 'Si tu no has solicitado este email, simplemente ignoralo<br><br>';
-								$message .= 'Accede a este link para activar el usuario:<br><br><a href="http://edimburgo.ovh/activate.php?email='.$_POST["newemail"].'&code='.$clave.'">http://edimburgo.ovh/activate.php?email='.$_POST["newemail"].'&code='.$clave.'</a><br><br>';
-								$message .= '<br><br>Atentamente <br><br>El equipo de <a href="http://edimburgo.ovh">Españoles en Edimburgo - El Directorio</a>';
+								$message .= 'Accede a este link para activar el usuario:<br><br><a href="http://www.paginasgranates.com/activate.php?email='.$_POST["newemail"].'&code='.$clave.'">http://www.paginasgranates.com/activate.php?email='.$_POST["newemail"].'&code='.$clave.'</a><br><br>';
+								$message .= '<br><br>Atentamente <br><br>El equipo de <a href="http://www.paginasgranates.com">Paginas Granates</a>';
 								$message .= '</body></html>';
-								$headers = "From: noreply@Edimburgo.ovh\r\n";
-								$headers .= "Reply-To: espanolesenedimburgo@gmail.com\r\n";
-								$headers .= "Return-Path: espanolesenedimburgo@gmail.com\r\n";
-								$headers .= "CC: \r\n";
-								$headers .= "MIME-Version: 1.0\r\n";
-								$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-								$headers .= "\r\n";
 
-						//		if ( mail($to,$subject,$message,$headers) ) {
-						//		   	echo "<h2>Ya estas registrado</h2><br>Inicia sesion con tu nombre y usuario y";
-						// 		  } else {
-						//			echo "<h2>No se ha podido enviar el email, pruebe mas tarde</h2>";
-						//		  }
-							//volver al index
+								$to=$_POST["newemail"];
+								$subject='Activa tu usuario de Paginas Granates';
 
-							echo "<h2>Ya estas registrado</h2><br>Inicia sesion con tu nombre y usuario <br> Recuerda que como usuario registrado puedes valorar servicios y publicar los tuyos propios";
+								include 'mailing.php';
+
+							echo "<h2>Ya estas registrado</h2><br>Activa tu usuario con el link que recibiras en tu email <br> Recuerda que como usuario registrado puedes valorar servicios y publicar los tuyos propios";
 							echo "<meta http-equiv=\"refresh\" content=\"5;url=index.php\"/>";
 							
 							}else{
